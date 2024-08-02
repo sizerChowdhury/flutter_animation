@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     return SizedBox(
       height: 160,
       child: TweenAnimationBuilder(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 3),
         tween: Tween<double>(begin: 0, end: 1),
         builder: (context,double value,child) {
           return Opacity(
@@ -52,13 +52,19 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-        child: const Text(
-          'trips',
-          style: TextStyle(
-            fontSize: 36,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+        child: TweenAnimationBuilder<Color?>(
+          duration: const Duration(seconds: 3),
+          tween: ColorTween(begin: Colors.black, end: Colors.white),
+          builder: (context, Color? colorValue, child) {
+            return Text(
+              'trips',
+              style: TextStyle(
+                fontSize: 36,
+                color: colorValue,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          },
         ),
       ),
     );
