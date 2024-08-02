@@ -70,7 +70,7 @@ class _TripListState extends State<TripList> {
           context,
           MaterialPageRoute(
             builder: (context) => DetailsPage(
-              tripModel: value,
+              trip: value,
             ),
           ),
         );
@@ -112,9 +112,12 @@ class _TripListState extends State<TripList> {
   _leadingImage(TripModel value) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
-      child: Image.asset(
-        'images/${value.image}',
-        height: 50.0,
+      child: Hero(
+        tag: value.image,
+        child: Image.asset(
+          'images/${value.image}',
+          height: 50.0,
+        ),
       ),
     );
   }
